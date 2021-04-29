@@ -1,9 +1,9 @@
 # 端口
 server:
-  port: 8080
+  port: 9001
 
 spring:
   application:
-    name: ddcat-gateway
+    name: ddcat-system
   profiles:
     active: dev
