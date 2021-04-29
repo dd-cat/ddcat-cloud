@@ -1,0 +1,9 @@
+# 端口
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ddcat-gateway
+  profiles:
+    active: dev
