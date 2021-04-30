@@ -1,7 +1,11 @@
+# 端口
 server:
   port: 8080
+
 spring:
   application:
-    name: ddcat-gateway
+    # 应用名称
+    name: @artifactId@
   profiles:
-    active: dev
+    # 环境配置
+    active: @profiles.active@

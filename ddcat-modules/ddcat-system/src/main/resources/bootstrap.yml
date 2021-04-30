@@ -4,6 +4,8 @@ server:
 
 spring:
   application:
-    name: ddcat-system
+    # 应用名称
+    name: @artifactId@
   profiles:
-    active: dev
+    # 环境配置
+    active: @profiles.active@
