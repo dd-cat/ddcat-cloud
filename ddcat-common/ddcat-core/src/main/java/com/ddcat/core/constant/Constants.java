@@ -1,4 +1,4 @@
-package com.ddcat.constant;
+package com.ddcat.core.constant;
 
 /**
  * 通用常量信息

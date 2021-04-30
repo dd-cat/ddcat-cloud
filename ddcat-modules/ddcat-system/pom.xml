@@ -15,6 +15,11 @@
         <dependency>
             <groupId>com.ddcat</groupId>
             <artifactId>ddcat-core</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ddcat</groupId>
+            <artifactId>ddcat-redis</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <!-- nacos 注册中心 -->

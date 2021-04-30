@@ -1,6 +1,6 @@
-package com.ddcat.entiry;
+package com.ddcat.core.entiry;
 
-import com.ddcat.constant.Constants;
+import com.ddcat.core.constant.Constants;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

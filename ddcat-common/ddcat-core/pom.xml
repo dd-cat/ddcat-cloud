@@ -22,11 +22,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-pool2</artifactId>
-        </dependency>
-
         <!-- springboot集成 jpa -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -70,5 +65,6 @@
             <artifactId>sa-token</artifactId>
             <version>1.4.0</version>
         </dependency>
+
     </dependencies>
 </project>

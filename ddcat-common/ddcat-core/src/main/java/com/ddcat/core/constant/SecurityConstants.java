@@ -1,4 +1,4 @@
-package com.ddcat.constant;
+package com.ddcat.core.constant;
 
 /**
  * @author dd-cat
