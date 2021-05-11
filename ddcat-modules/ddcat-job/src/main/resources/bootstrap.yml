@@ -1,6 +1,6 @@
 # 端口
 server:
-  port: 9001
+  port: 9002
 
 spring:
   application:
@@ -10,9 +10,21 @@ spring:
     # 环境配置
     active: @profiles.active@
 dubbo:
-  protocol:
-    name: dubbo
-    port: -1
+  provider:
+    cluster: failfast
+    timeout: 3000
+  cloud:
+    subscribed-services: ddcat-system
+  consumer:
+    cluster: failfast
+    timeout: 3000
+  scan:
+    base-packages: com.ddcat.api.service
+  protocols:
+    dubbo:
+      name: dubbo
+      port: -1
+      server: netty
   registry:
     #   The Spring Cloud Dubbo's registry extension
     address: nacos://192.168.164.128:8848?namespace=7bf8387e-5dc4-49bf-a878-8b95b805556a

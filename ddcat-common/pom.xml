@@ -16,6 +16,7 @@
         <module>ddcat-core</module>
         <module>ddcat-nacos</module>
         <module>ddcat-redis</module>
+        <module>ddcat-security</module>
     </modules>
 
 </project>

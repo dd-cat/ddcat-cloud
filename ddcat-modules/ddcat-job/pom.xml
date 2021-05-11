@@ -9,9 +9,20 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ddcat-system</artifactId>
+    <artifactId>ddcat-job</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.ddcat</groupId>
+            <artifactId>ddcat-api</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ddcat</groupId>
+            <artifactId>ddcat-redis</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
         <!-- Sentinel依赖 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -52,11 +63,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.12.0</version>
         </dependency>
-        <dependency>
-            <groupId>com.ddcat</groupId>
-            <artifactId>ddcat-security</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
 
     </dependencies>
 
@@ -76,4 +82,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

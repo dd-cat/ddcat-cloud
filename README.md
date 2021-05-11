@@ -3,6 +3,8 @@
 * 集成Sentinel、Nacos
 * Sharding JDBC分库分表读写分离
 * Seata分布式事务
+* MyBatis Plus
+* SpringSecurity OAuth2
 
 #### 软件架构
 软件架构说明

@@ -1,6 +1,6 @@
 # 端口
 server:
-  port: 9001
+  port: 9003
 
 spring:
   application:
@@ -9,7 +9,12 @@ spring:
   profiles:
     # 环境配置
     active: @profiles.active@
+
 dubbo:
+  cloud:
+    subscribed-services: ddcat-system
+  consumer:
+    check: false
   protocol:
     name: dubbo
     port: -1

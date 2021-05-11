@@ -1,4 +1,4 @@
-package com.ddcat.core.config;
+package com.ddcat.redis.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

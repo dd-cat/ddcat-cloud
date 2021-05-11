@@ -11,6 +11,7 @@
         <module>ddcat-common</module>
         <module>ddcat-modules</module>
         <module>ddcat-native</module>
+        <module>ddcat-auth</module>
     </modules>
 
     <packaging>pom</packaging>
