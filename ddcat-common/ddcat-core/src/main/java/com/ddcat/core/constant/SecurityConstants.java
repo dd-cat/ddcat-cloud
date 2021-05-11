@@ -2,7 +2,6 @@ package com.ddcat.core.constant;
 
 /**
  * @author dd-cat
- * @date 2020-12-22
  */
 public interface SecurityConstants {
 

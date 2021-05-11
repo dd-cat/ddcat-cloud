@@ -13,8 +13,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * 全局统一响应处理
  *
  * @author dd-cat
- * @version 1.0
- * @date 2020-11-25 13:33
  */
 @RestControllerAdvice({"com.ddcat.system.controller"})
 public class GlobalResponseHandler implements ResponseBodyAdvice<Object> {

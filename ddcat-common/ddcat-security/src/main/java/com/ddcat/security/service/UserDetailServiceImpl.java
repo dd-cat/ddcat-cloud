@@ -16,8 +16,6 @@ import java.util.stream.Collectors;
 
 /**
  * @author dd-cat
- * @version 1.0
- * @date 2020-12-18 14:20
  */
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
