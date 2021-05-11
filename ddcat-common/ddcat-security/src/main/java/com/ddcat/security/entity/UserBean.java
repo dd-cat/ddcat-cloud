@@ -1,6 +1,7 @@
 package com.ddcat.security.entity;
 
 import com.ddcat.api.entity.SysUser;
+import com.ddcat.core.constant.SecurityConstants;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -13,11 +13,17 @@ import org.springframework.web.bind.annotation.*;
  * @author dd-cat
  */
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private SysUserService sysUserService;
 
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "hello";
+    }
 
     /**
      * 分页查询
