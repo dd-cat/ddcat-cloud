@@ -2,7 +2,6 @@ package com.ddcat.security.service;
 
 import com.ddcat.api.entity.UserInfo;
 import com.ddcat.api.service.UserService;
-import com.ddcat.core.entiry.Result;
 import com.ddcat.security.entity.UserBean;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.security.core.GrantedAuthority;

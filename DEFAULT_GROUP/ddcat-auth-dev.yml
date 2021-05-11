@@ -1,0 +1,47 @@
+spring:
+  shardingsphere:
+    datasource:
+      names: master,slave0
+      master:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.164.128:3306/ddcat?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+        username: root
+        password: 123456
+      # 数据源 从库
+      slave0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.164.128:3307/ddcat?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+        username: root
+        password: 123456
+    #分库分表
+    # sharding:
+      # tables:
+      #   db_user:
+      #     #如果配置了master-slave-rules则需要用其中配置的数据源
+      #     actual-data-nodes: db_master_0.db_user_$->{0..4}
+      #     #分表策略
+      #     table-strategy:
+      #       inline:
+      #         sharding-column: id
+      #         algorithm-expression: db_user_$->{id % 5}
+      #       # 分表策略，自定义分表策略
+      #       standard:
+      #         sharding-column: id
+      #         precise-algorithm-class-name: com.cloud.sharding.config.UserShardingTableAlgorithm
+    #   master-slave-rules:
+    #     db_master_0:
+    #       name: ms
+    #       master-data-source-name: master
+    #       slave-data-source-names: slave0
+    # 读写分离
+    masterslave:
+        load-balance-algorithm-type: round_robin
+        name: ms
+        master-data-source-name: master
+        slave-data-source-names: slave0
+    #打印sql
+    props:
+      sql:
+        show: true

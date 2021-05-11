@@ -39,7 +39,6 @@ public class ErpResourceServerConfigurerAdapter extends ResourceServerConfigurer
 
     public TokenStore tokenStore() {
         RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
-        //tokenStore.setPrefix("dd-cat:");
         return tokenStore;
     }
 

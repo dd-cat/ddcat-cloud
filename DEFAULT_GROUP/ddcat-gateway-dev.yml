@@ -1,0 +1,29 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # 是否和服务注册与发现组件结合，设置为 true 后可以直接使用应用名称调用服务
+          enabled: true
+          
+      routes:
+        - id: ddcat-auth
+          uri: lb://ddcat-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+
+        - id: ddcat-system
+          uri: lb://ddcat-system
+          predicates:
+            - Path=/system/**
+          filters:
+            - StripPrefix=1
+
+        - id: ddcat-job
+          uri: lb://ddcat-job
+          predicates:
+            - Path=/job/**
+          filters:
+            - StripPrefix=1

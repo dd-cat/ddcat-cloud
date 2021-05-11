@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ddcat.api.entity.SysUser;
 import com.ddcat.system.mapper.SysUserMapper;
 import com.ddcat.system.service.SysUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,7 +11,5 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper,SysUser> implements SysUserService {
-    @Autowired
-    private SysUserMapper sysUserMapper;
 
 }
