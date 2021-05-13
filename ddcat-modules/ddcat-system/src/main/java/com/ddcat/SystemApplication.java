@@ -1,6 +1,6 @@
 package com.ddcat;
 
-import com.ddcat.security.component.CatResourceServerConfigurerAdapter;
+import com.ddcat.security.config.ResourceServerConfig;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Import;
 @SpringCloudApplication
 @EnableDubbo
 @MapperScan("com.ddcat.system.mapper")
-@Import({CatResourceServerConfigurerAdapter.class})
+@Import({ResourceServerConfig.class})
 public class SystemApplication {
     public static void main(String[] args) {
         SpringApplication.run(SystemApplication.class, args);

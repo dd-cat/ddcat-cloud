@@ -1,4 +1,4 @@
-package com.ddcat.security.component;
+package com.ddcat.security.config;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -23,7 +23,7 @@ import java.util.Set;
 @Slf4j
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class CatResourceServerConfigurerAdapter extends ResourceServerConfigurerAdapter {
+public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Autowired
     private RedisConnectionFactory redisConnectionFactory;
