@@ -2,26 +2,28 @@ package com.ddcat.core.constant;
 
 /**
  * 通用常量信息
+ *
+ * @author dd-cat
  */
-public class Constants {
+public interface Constants {
 
     /**
      * 成功标记
      */
-    public static final Integer SUCCESS = 200;
+    Integer SUCCESS = 200;
 
     /**
      * 失败标记
      */
-    public static final Integer FAIL = 500;
+    Integer FAIL = 500;
 
     /**
      * 默认成功消息
      */
-    public static final String DEFAULT_SUCCESS_MESSAGE = "处理成功";
+    String DEFAULT_SUCCESS_MESSAGE = "处理成功";
     /**
      * 默认失败消息
      */
-    public static final String DEFAULT_FAIL_MESSAGE = "处理失败";
+    String DEFAULT_FAIL_MESSAGE = "处理失败";
 
 }

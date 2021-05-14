@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ddcat-common/ddcat-api/ddcat-api.iml" filepath="$PROJECT_DIR$/ddcat-common/ddcat-api/ddcat-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ddcat-auth/ddcat-auth.iml" filepath="$PROJECT_DIR$/ddcat-auth/ddcat-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ddcat-cloud.iml" filepath="$PROJECT_DIR$/ddcat-cloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ddcat-common/ddcat-common.iml" filepath="$PROJECT_DIR$/ddcat-common/ddcat-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ddcat-common/ddcat-core/ddcat-core.iml" filepath="$PROJECT_DIR$/ddcat-common/ddcat-core/ddcat-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ddcat-native/ddcat-gateway/ddcat-gateway.iml" filepath="$PROJECT_DIR$/ddcat-native/ddcat-gateway/ddcat-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ddcat-modules/ddcat-job/ddcat-job.iml" filepath="$PROJECT_DIR$/ddcat-modules/ddcat-job/ddcat-job.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ddcat-modules/ddcat-modules.iml" filepath="$PROJECT_DIR$/ddcat-modules/ddcat-modules.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ddcat-common/ddcat-nacos/ddcat-nacos.iml" filepath="$PROJECT_DIR$/ddcat-common/ddcat-nacos/ddcat-nacos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ddcat-native/ddcat-native.iml" filepath="$PROJECT_DIR$/ddcat-native/ddcat-native.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ddcat-common/ddcat-redis/ddcat-redis.iml" filepath="$PROJECT_DIR$/ddcat-common/ddcat-redis/ddcat-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ddcat-common/ddcat-security/ddcat-security.iml" filepath="$PROJECT_DIR$/ddcat-common/ddcat-security/ddcat-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ddcat-modules/ddcat-system/ddcat-system.iml" filepath="$PROJECT_DIR$/ddcat-modules/ddcat-system/ddcat-system.iml" />
+    </modules>
+  </component>
+</project>

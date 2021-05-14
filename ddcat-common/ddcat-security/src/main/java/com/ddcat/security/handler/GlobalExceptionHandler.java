@@ -40,7 +40,7 @@ public class GlobalExceptionHandler {
                         "},errorMessage{" + fieldError.getDefaultMessage() + "}");
 
             });
-            if (errors.size() > 0) {
+            if (!errors.isEmpty()) {
                 FieldError fieldError = (FieldError) errors.get(0);
                 message = fieldError.getDefaultMessage();
             }

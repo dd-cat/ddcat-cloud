@@ -4,8 +4,10 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ddcat.api.entity.SysUser;
+import com.ddcat.core.entiry.Result;
 import com.ddcat.system.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,14 +23,16 @@ public class UserController {
 
 
     @GetMapping("/hello")
-    public String hello() {
-        return "hello";
+    @PreAuthorize("hasAnyAuthority('p1')")
+    public Result hello() {
+        return Result.success();
     }
 
     /**
      * 分页查询
      */
     @GetMapping("/page")
+    @PreAuthorize("hasAnyAuthority('p2')")
     public IPage<SysUser> page(Page page, SysUser sysUser) {
         return sysUserService.page(page, Wrappers.lambdaQuery(sysUser));
     }
