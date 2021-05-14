@@ -3,6 +3,8 @@ package com.ddcat.api.service;
 import com.ddcat.api.entity.UserInfo;
 
 /**
+ * 用户Dubbo接口
+ *
  * @author dd-cat
  */
 public interface UserService {
