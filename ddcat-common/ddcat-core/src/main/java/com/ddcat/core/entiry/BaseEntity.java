@@ -1,9 +1,7 @@
 package com.ddcat.core.entiry;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
@@ -25,7 +23,6 @@ public class BaseEntity implements Serializable {
      * 主键id
      */
     @JsonSerialize(using = ToStringSerializer.class)
-    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
@@ -51,5 +48,10 @@ public class BaseEntity implements Serializable {
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
+
+    /**
+     * 逻辑已删除值(默认为 1) 逻辑未删除值(默认为 0)
+     */
+    private Byte flag;
 
 }

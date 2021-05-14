@@ -1,11 +1,8 @@
 package com.ddcat.api.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.ddcat.core.entiry.BaseEntity;
 import lombok.Data;
-
-import java.io.Serializable;
-import java.util.*;
 
 /**
  * @author 小懒虫
@@ -13,22 +10,14 @@ import java.util.*;
  */
 @Data
 @TableName("sys_menu")
-public class SysMenu implements Serializable {
-    @TableId
-    private Long id;
-    private Long pid;
-    private String pids;
+public class SysMenu extends BaseEntity {
     private String title;
+    private Long pid;
+
     private String url;
-    private String perms;
+    private String permission;
     private String icon;
     private Byte type;
     private Integer sort;
     private String remark;
-
-    private Date createDate;
-    private Date updateDate;
-
-    private Byte status;
-
 }

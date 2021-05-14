@@ -7,5 +7,5 @@ import com.ddcat.api.entity.UserInfo;
  */
 public interface UserService {
 
-    UserInfo info(String username);
+    UserInfo info(String username) throws Exception;
 }

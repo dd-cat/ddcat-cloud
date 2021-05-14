@@ -1,24 +1,16 @@
 package com.ddcat.api.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.ddcat.core.entiry.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
  * @author dd-cat
  */
 @Data
 @TableName("sys_user")
-public class SysUser implements Serializable {
-    private static final long serialVersionUID = -47539914963692882L;
-
-    /**
-     * 主键id
-     */
-    @TableId
-    private Long id;
+public class SysUser extends BaseEntity {
 
     /**
      * 用户名
@@ -28,6 +20,7 @@ public class SysUser implements Serializable {
     /**
      * 密码
      */
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     /**
@@ -56,24 +49,9 @@ public class SysUser implements Serializable {
     private String email;
 
     /**
-     * 创建时间
-     */
-    private LocalDateTime createTime;
-
-    /**
-     * 更新时间
-     */
-    private LocalDateTime updateTime;
-
-    /**
      * 备注
      */
     private String remark;
-
-    /**
-     * 状态
-     */
-    private Byte status;
 
     /**
      * 部门ID

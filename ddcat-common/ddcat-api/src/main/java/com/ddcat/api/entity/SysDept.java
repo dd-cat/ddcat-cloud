@@ -11,7 +11,6 @@ import java.util.Date;
  * @author dd-cat
  */
 @Data
-@TableName("sys_dept")
 public class SysDept implements Serializable {
     @TableId
     private Long id;

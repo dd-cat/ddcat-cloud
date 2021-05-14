@@ -3,6 +3,7 @@ package com.ddcat.security.service;
 import com.ddcat.api.entity.UserInfo;
 import com.ddcat.api.service.UserService;
 import com.ddcat.security.entity.UserBean;
+import lombok.SneakyThrows;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,11 +24,10 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @DubboReference
     private UserService userService;
 
+    @SneakyThrows
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println(123456778);
         UserInfo userInfo = userService.info(username);
-        System.out.println("result:" + userInfo);
         return getUserDetails(userInfo);
     }
 

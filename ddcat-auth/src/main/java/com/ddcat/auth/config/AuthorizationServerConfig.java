@@ -83,9 +83,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
             final Map<String, Object> additionalInfo = new HashMap<>(4);
             UserBean user = (UserBean) authentication.getUserAuthentication().getPrincipal();
             additionalInfo.put(SecurityConstants.DETAILS_LICENSE, SecurityConstants.PROJECT_LICENSE);
-            additionalInfo.put(SecurityConstants.DETAILS_USER_ID, user.getUser().getId());
-            additionalInfo.put(SecurityConstants.DETAILS_USERNAME, user.getUser().getUsername());
-            additionalInfo.put(SecurityConstants.DETAILS_DEPT_ID, user.getUser().getDeptId());
+            additionalInfo.put(SecurityConstants.USER_INFO, user);
             ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
             return accessToken;
         };

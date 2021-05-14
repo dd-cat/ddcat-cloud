@@ -50,4 +50,9 @@ public interface SecurityConstants {
      */
     String DETAILS_LICENSE = "license";
 
+    /**
+     * 协议字段
+     */
+    String USER_INFO = "user_info";
+
 }

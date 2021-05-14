@@ -22,6 +22,7 @@ public class DefaultMetaObjectHandler implements MetaObjectHandler {
     private static final String CREATE_TIME = "createTime";
     private static final String UPDATE_BY = "updateBy";
     private static final String UPDATE_TIME = "updateTime";
+    private static final String FLAG = "flag";
 
     @Override
     public void insertFill(MetaObject metaObject) {
@@ -31,6 +32,7 @@ public class DefaultMetaObjectHandler implements MetaObjectHandler {
         UserBean user = SecurityUtil.getUser();
         this.strictInsertFill(metaObject, CREATE_BY, String.class, user.getUsername());
         this.strictInsertFill(metaObject, UPDATE_BY, String.class, user.getUsername());
+        this.strictInsertFill(metaObject, FLAG, Byte.class, (byte) 0);
     }
 
     @Override

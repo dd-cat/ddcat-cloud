@@ -62,6 +62,6 @@ public class UserBean implements UserDetails {
     @Override
     @JsonIgnore
     public boolean isEnabled() {
-        return 0 == user.getStatus();
+        return 0 == user.getFlag();
     }
 }
