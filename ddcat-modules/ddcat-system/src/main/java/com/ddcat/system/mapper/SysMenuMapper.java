@@ -11,10 +11,10 @@ import java.util.List;
 public interface SysMenuMapper extends BaseMapper<SysMenu> {
 
     /**
-     * 获取角色权限
+     * 通过角色编号查询菜单
      *
-     * @param list /
-     * @return /
+     * @param roleId 角色ID
+     * @return List<SysMenu>
      */
-    List<String> getPermissionsByRoleIds(List<Long> list);
+    List<SysMenu> listMenusByRoleId(Long roleId);
 }

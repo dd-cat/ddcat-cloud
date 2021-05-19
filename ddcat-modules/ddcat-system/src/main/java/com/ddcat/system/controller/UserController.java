@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ddcat.api.entity.SysUser;
-import com.ddcat.core.entiry.Result;
 import com.ddcat.system.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,13 +19,6 @@ public class UserController {
 
     @Autowired
     private SysUserService sysUserService;
-
-
-    @GetMapping("/hello")
-    @PreAuthorize("hasAnyAuthority('p1')")
-    public Result hello() {
-        return Result.success();
-    }
 
     /**
      * 分页查询

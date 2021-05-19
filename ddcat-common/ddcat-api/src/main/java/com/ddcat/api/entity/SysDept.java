@@ -1,57 +1,48 @@
 package com.ddcat.api.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.ddcat.core.entiry.BaseEntity;
 import lombok.Data;
-
-import java.io.Serializable;
-import java.util.Date;
 
 /**
  * @author dd-cat
  */
 @Data
-public class SysDept implements Serializable {
-    @TableId
-    private Long id;
+@TableName("sys_dept")
+public class SysDept extends BaseEntity {
+    /**
+     * 父部门ID
+     */
+    private Long parentId;
+
+    /**
+     * 祖级列表
+     */
+    private String ancestors;
 
     /**
      * 部门名称
      */
-    private String title;
+    private String name;
 
     /**
-     * 父级编号
-     */
-    private Long pid;
-
-    /**
-     * 所有父级编号
-     */
-    private String pids;
-
-    /**
-     * 排序
+     * 显示顺序
      */
     private Integer sort;
 
-    /**
-     * 备注
-     */
-    private String remark;
 
     /**
-     * 创建时间
+     * 负责人
      */
-    private Date createDate;
+    private String leader;
 
     /**
-     * 更新时间
+     * 联系电话
      */
-    private Date updateDate;
+    private String phone;
 
     /**
-     * 数据状态
+     * 邮箱
      */
-    private Byte status;
+    private String email;
 }

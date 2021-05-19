@@ -2,16 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddcat.system.mapper.SysMenuMapper">
 
-    <select id="getPermissionsByRoleIds" resultType="java.lang.String">
-        select permission from sys_menu
-        where id in(
-        select menu_id from sys_role_menu
-        where role_id in
-        <foreach item="roleId" collection="list" separator="," open="(" close=")" index="">
-            #{roleId}
-        </foreach>
-        )
-        and permission is not null
+    <!--通过角色查询菜单信息-->
+    <select id="listMenusByRoleId" resultType="com.ddcat.api.entity.SysMenu">
+        select sys_menu.*
+        from sys_menu
+                 left join sys_role_menu on sys_menu.id = sys_role_menu.menu_id
+        where sys_menu.flag = '0'
+          and sys_role_menu.role_id = #{roleid}
+        order by sys_menu.sort desc
     </select>
 
 </mapper>

@@ -11,7 +11,18 @@ import lombok.Data;
 @TableName("sys_role")
 public class SysRole extends BaseEntity {
 
+    /**
+     * 角色code
+     */
+    private String code;
+
+    /**
+     * 角色名称
+     */
     private String name;
-    private String title;
+
+    /**
+     * 描述
+     */
     private String remark;
 }
