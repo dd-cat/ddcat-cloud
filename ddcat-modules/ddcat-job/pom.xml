@@ -13,17 +13,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.ddcat</groupId>
-            <artifactId>ddcat-api</artifactId>
-            <version>${parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ddcat</groupId>
-            <artifactId>ddcat-redis</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>21.0</version>
@@ -45,14 +34,6 @@
             <artifactId>seata-spring-boot-starter</artifactId>
             <version>1.4.1</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
-        </dependency>
-
     </dependencies>
 
     <build>

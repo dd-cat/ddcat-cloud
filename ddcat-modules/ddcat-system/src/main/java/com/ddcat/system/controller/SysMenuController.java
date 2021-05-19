@@ -38,14 +38,6 @@ public class SysMenuController {
     public List<Tree<Long>> getUserMenus() {
         Set<SysMenu> all = new HashSet<>();
         UserBean user = SecurityUtil.getUser();
-        /*if (user.getr().getIsAdmin()) {
-            all.addAll(
-                    menuService.list().stream()
-                            .filter(menu -> !"2".equals(menu.getType()))
-                            .collect(Collectors.toList())
-            );
-        }*/
-
         user.getRoles().forEach(roleId ->
                 all.addAll(
                         menuService.findMenuByRoleId(roleId).stream()

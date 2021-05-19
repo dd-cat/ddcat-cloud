@@ -16,4 +16,12 @@
         <module>ddcat-job</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.ddcat</groupId>
+            <artifactId>ddcat-security</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>
