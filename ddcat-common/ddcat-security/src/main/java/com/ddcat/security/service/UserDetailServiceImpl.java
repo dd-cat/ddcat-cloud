@@ -1,7 +1,7 @@
 package com.ddcat.security.service;
 
 import com.ddcat.api.entity.UserInfo;
-import com.ddcat.api.service.UserService;
+import com.ddcat.api.service.RemoteUserService;
 import com.ddcat.security.entity.UserBean;
 import lombok.SneakyThrows;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -22,12 +22,12 @@ import java.util.stream.Collectors;
 public class UserDetailServiceImpl implements UserDetailsService {
 
     @DubboReference
-    private UserService userService;
+    private RemoteUserService remoteUserService;
 
     @SneakyThrows
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserInfo userInfo = userService.info(username);
+        UserInfo userInfo = remoteUserService.info(username);
         return getUserDetails(userInfo);
     }
 

@@ -6,7 +6,7 @@ import com.ddcat.api.entity.SysMenu;
 import com.ddcat.api.entity.SysRole;
 import com.ddcat.api.entity.SysUser;
 import com.ddcat.api.entity.UserInfo;
-import com.ddcat.api.service.UserService;
+import com.ddcat.api.service.RemoteUserService;
 import com.ddcat.system.service.SysMenuService;
 import com.ddcat.system.service.SysRoleService;
 import com.ddcat.system.service.SysUserService;
@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  * @author dd-cat
  */
 @DubboService
-public class UserServiceImpl implements UserService {
+public class RemoteUserServiceImpl implements RemoteUserService {
     @Autowired
     private SysUserService sysUserService;
 

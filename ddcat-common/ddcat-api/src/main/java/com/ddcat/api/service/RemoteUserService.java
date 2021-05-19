@@ -7,7 +7,7 @@ import com.ddcat.api.entity.UserInfo;
  *
  * @author dd-cat
  */
-public interface UserService {
+public interface RemoteUserService {
 
     /**
      * 根据用户名获取用户信息
