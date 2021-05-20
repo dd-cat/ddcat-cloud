@@ -28,10 +28,8 @@ public class DefaultMetaObjectHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
         log.info("start insert fill ....");
         this.strictInsertFill(metaObject, CREATE_TIME, LocalDateTime.class, LocalDateTime.now());
-        this.strictInsertFill(metaObject, UPDATE_TIME, LocalDateTime.class, LocalDateTime.now());
         UserBean user = SecurityUtil.getUser();
         this.strictInsertFill(metaObject, CREATE_BY, String.class, user.getUsername());
-        this.strictInsertFill(metaObject, UPDATE_BY, String.class, user.getUsername());
         this.strictInsertFill(metaObject, FLAG, Byte.class, (byte) 0);
     }
 
