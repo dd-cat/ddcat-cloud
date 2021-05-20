@@ -3,7 +3,6 @@ package com.ddcat.security.aspect;
 import cn.hutool.json.JSONUtil;
 import com.ddcat.api.entity.SysLog;
 import com.ddcat.api.service.RemoteLogService;
-import com.ddcat.security.util.SecurityUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -30,8 +29,6 @@ public class LogAspect {
         String methodName = point.getSignature().getName();
 
         SysLog logBean = new SysLog();
-        logBean.setCreateBy(SecurityUtil.getUser().getUsername());
-
         logBean.setMethod(className + "." + methodName + "()");
         logBean.setParams(JSONUtil.toJsonStr(point.getArgs()));
         logBean.setTitle(sysLog.value());
@@ -48,6 +45,7 @@ public class LogAspect {
         } finally {
             Long endTime = System.currentTimeMillis();
             logBean.setTime(endTime - startTime);
+            System.out.println(JSONUtil.toJsonStr(logBean));
             remoteLogService.saveLog(logBean);
         }
         return obj;

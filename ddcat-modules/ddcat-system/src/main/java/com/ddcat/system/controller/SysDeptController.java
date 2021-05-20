@@ -3,6 +3,7 @@ package com.ddcat.system.controller;
 import cn.hutool.core.lang.tree.Tree;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ddcat.api.entity.SysDept;
+import com.ddcat.core.annotation.SysLog;
 import com.ddcat.system.service.SysDeptService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,7 @@ public class SysDeptController {
      * @return 部门信息
      */
     @GetMapping("tree")
+    @SysLog("部门树")
     public List<Tree<Long>> tree() {
         Set<SysDept> all = new HashSet<>(deptService.list());
         return deptService.treeDept(all);

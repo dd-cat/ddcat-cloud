@@ -3,11 +3,11 @@ package com.ddcat.api.entity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.ddcat.core.entiry.BaseEntity;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -15,7 +15,8 @@ import java.time.LocalDateTime;
  */
 @Data
 @TableName("sys_log")
-public class SysLog extends BaseEntity {
+public class SysLog implements Serializable {
+    private static final long serialVersionUID = 1L;
     /**
      * 主键id
      */
@@ -23,44 +24,12 @@ public class SysLog extends BaseEntity {
     private Long id;
 
     /**
-     * 创建者
-     */
-    @TableField(fill = FieldFill.INSERT)
-    private String createBy;
-
-    /**
-     * 创建时间
-     */
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
-
-    /**
-     * 日志类型
-     */
-    private String type;
-
-    /**
      * 日志标题
      */
     private String title;
 
     /**
-     * 操作IP地址
-     */
-    private String remoteAddr;
-
-    /**
-     * 用户浏览器
-     */
-    private String userAgent;
-
-    /**
-     * 请求URI
-     */
-    private String requestUri;
-
-    /**
-     * 操作方式
+     * 请求方法
      */
     private String method;
 
@@ -80,8 +49,15 @@ public class SysLog extends BaseEntity {
     private String exception;
 
     /**
-     * 服务ID
+     * 创建者
      */
-    private String serviceId;
+    @TableField(fill = FieldFill.INSERT)
+    private String createBy;
+
+    /**
+     * 创建时间
+     */
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
 
 }
