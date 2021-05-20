@@ -14,6 +14,7 @@
     <modules>
         <module>ddcat-system</module>
         <module>ddcat-job</module>
+        <module>ddcat-mq</module>
     </modules>
 
     <dependencies>

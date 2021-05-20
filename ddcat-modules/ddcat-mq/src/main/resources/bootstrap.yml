@@ -1,0 +1,21 @@
+# 端口
+server:
+  port: 9004
+
+spring:
+  application:
+    # 应用名称
+    name: @artifactId@
+  profiles:
+    # 环境配置
+    active: @profiles.active@
+  #RabbitMQ
+  rabbitmq:
+    host: 192.168.164.128
+    port: 5672
+    username: guest
+    password: guest
+    #必须配置这个才会确认回调
+    publisher-confirm-type: correlated
+    #消息投递到队列失败是否回调
+    publisher-returns: true

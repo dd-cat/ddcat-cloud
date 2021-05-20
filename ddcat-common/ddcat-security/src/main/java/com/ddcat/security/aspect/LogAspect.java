@@ -1,6 +1,9 @@
 package com.ddcat.security.aspect;
 
+import cn.hutool.json.JSONUtil;
+import com.ddcat.api.entity.SysLog;
 import com.ddcat.api.service.RemoteLogService;
+import com.ddcat.security.util.SecurityUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -23,8 +26,30 @@ public class LogAspect {
     @SneakyThrows
     @Around("@annotation(sysLog)")
     public Object around(ProceedingJoinPoint point, com.ddcat.core.annotation.SysLog sysLog) {
-        // TODO
+        String className = point.getTarget().getClass().getName();
+        String methodName = point.getSignature().getName();
 
-        return point.proceed();
+        SysLog logBean = new SysLog();
+        logBean.setCreateBy(SecurityUtil.getUser().getUsername());
+
+        logBean.setMethod(className + "." + methodName + "()");
+        logBean.setParams(JSONUtil.toJsonStr(point.getArgs()));
+        logBean.setTitle(sysLog.value());
+
+        // 发送异步日志事件
+        Long startTime = System.currentTimeMillis();
+        Object obj;
+
+        try {
+            obj = point.proceed();
+        } catch (Exception e) {
+            logBean.setException(e.getMessage());
+            throw e;
+        } finally {
+            Long endTime = System.currentTimeMillis();
+            logBean.setTime(endTime - startTime);
+            remoteLogService.saveLog(logBean);
+        }
+        return obj;
     }
 }
