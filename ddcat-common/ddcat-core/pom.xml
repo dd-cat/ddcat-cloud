@@ -72,5 +72,11 @@
             <version>21.0</version>
         </dependency>
 
+        <!--validation校验-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
     </dependencies>
 </project>
