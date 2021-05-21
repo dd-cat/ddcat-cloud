@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -45,11 +46,12 @@ public class SysUserController {
     /**
      * 添加
      *
-     * @param user 实体
+     * @param sysUser 实体
      */
     @PostMapping
-    public boolean save(@RequestBody SysUser user) {
-        return userService.save(user);
+    public boolean save(@Valid @RequestBody SysUser sysUser) {
+        sysUser.setPassword(new BCryptPasswordEncoder().encode(sysUser.getPassword()));
+        return userService.save(sysUser);
     }
 
     /**

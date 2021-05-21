@@ -11,6 +11,12 @@
 
     <artifactId>ddcat-core</artifactId>
 
+    <properties>
+        <mybatis-plus.version>3.4.2</mybatis-plus.version>
+        <sharding-jdbc.version>4.1.1</sharding-jdbc.version>
+        <mysql.version>8.0.24</mysql.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.ddcat</groupId>
@@ -31,26 +37,26 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.4.2</version>
+            <version>${mybatis-plus.version}</version>
         </dependency>
 
         <!--sharding jdbc springboot-->
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
-            <version>4.1.1</version>
+            <version>${sharding-jdbc.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-namespace</artifactId>
-            <version>4.1.1</version>
+            <version>${sharding-jdbc.version}</version>
         </dependency>
 
         <!-- MySql -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.24</version>
+            <version>${mysql.version}</version>
         </dependency>
 
         <!-- Druid -->

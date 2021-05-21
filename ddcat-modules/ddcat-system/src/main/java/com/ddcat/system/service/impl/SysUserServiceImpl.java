@@ -10,6 +10,5 @@ import org.springframework.stereotype.Service;
  * @author dd-cat
  */
 @Service
-public class SysUserServiceImpl extends ServiceImpl<SysUserMapper,SysUser> implements SysUserService {
-
+public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 }

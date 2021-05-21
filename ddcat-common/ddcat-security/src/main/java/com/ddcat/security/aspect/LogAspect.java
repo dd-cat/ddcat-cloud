@@ -45,7 +45,6 @@ public class LogAspect {
         } finally {
             Long endTime = System.currentTimeMillis();
             logBean.setTime(endTime - startTime);
-            System.out.println(JSONUtil.toJsonStr(logBean));
             remoteLogService.saveLog(logBean);
         }
         return obj;

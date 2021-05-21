@@ -5,6 +5,8 @@ import com.ddcat.core.entiry.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * @author dd-cat
  */
@@ -15,6 +17,7 @@ public class SysUser extends BaseEntity {
     /**
      * 用户名
      */
+    @NotBlank(message = "用户名不能为空！")
     private String username;
 
     /**

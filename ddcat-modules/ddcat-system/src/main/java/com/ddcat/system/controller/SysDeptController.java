@@ -1,7 +1,6 @@
 package com.ddcat.system.controller;
 
 import cn.hutool.core.lang.tree.Tree;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ddcat.api.entity.SysDept;
 import com.ddcat.core.annotation.SysLog;
 import com.ddcat.system.service.SysDeptService;
@@ -33,17 +32,13 @@ public class SysDeptController {
         return deptService.treeDept(all);
     }
 
-    @GetMapping("list")
-    public List<SysDept> list(SysDept dept) {
-        return deptService.list(Wrappers.query(dept));
-    }
-
     /**
-     * 通过ID查询
+     * 通过ID查询部门
      *
      * @param id ID
      */
     @GetMapping("/{id}")
+    @SysLog("通过ID查询部门")
     public SysDept getById(@PathVariable Integer id) {
         return deptService.getById(id);
     }
@@ -54,6 +49,7 @@ public class SysDeptController {
      * @param sysDept 实体
      */
     @PostMapping
+    @SysLog("添加部门")
     public boolean save(@RequestBody SysDept sysDept) {
         return deptService.save(sysDept);
     }
@@ -64,6 +60,7 @@ public class SysDeptController {
      * @param ids ids
      */
     @DeleteMapping("/{ids}")
+    @SysLog("删除部门")
     public boolean removeByIds(@PathVariable List<Long> ids) {
         return deptService.removeByIds(ids);
     }
@@ -74,6 +71,7 @@ public class SysDeptController {
      * @param sysDept 实体
      */
     @PutMapping
+    @SysLog("更新部门")
     public boolean update(@RequestBody SysDept sysDept) {
         return deptService.updateById(sysDept);
     }
