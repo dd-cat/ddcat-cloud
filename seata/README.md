@@ -1,5 +1,5 @@
 # Seata 分布式事务 搭建指南
-
+搭建教程参考 https://blog.csdn.net/qq_40548741/article/details/117219071?spm=1001.2014.3001.5501
 下载地址 https://github.com/seata/seata/releases
 
 ###### 修改file.conf

@@ -1,12 +1,17 @@
 package com.ddcat.system.controller;
 
+import cn.afterturn.easypoi.excel.entity.params.ExcelExportEntity;
 import cn.hutool.core.lang.tree.Tree;
 import com.ddcat.api.entity.SysDept;
 import com.ddcat.core.annotation.SysLog;
+import com.ddcat.core.util.ExcelUtils;
 import com.ddcat.system.service.SysDeptService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -74,5 +79,15 @@ public class SysDeptController {
     @SysLog("更新部门")
     public boolean update(@RequestBody SysDept sysDept) {
         return deptService.updateById(sysDept);
+    }
+
+    @GetMapping("/export")
+    public void export(HttpServletResponse response) throws IOException {
+
+        List<SysDept> list = deptService.list();
+        List<ExcelExportEntity> colList = new ArrayList<ExcelExportEntity>();
+        colList.add(new ExcelExportEntity("ID", "id"));
+        colList.add(new ExcelExportEntity("部门名称", "name"));
+        ExcelUtils.exportExcel(list, null, "1234", "express", response, colList);
     }
 }

@@ -84,5 +84,11 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
+        <!-- easy poi -->
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-spring-boot-starter</artifactId>
+        </dependency>
+
     </dependencies>
 </project>

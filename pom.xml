@@ -25,6 +25,9 @@
         <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.2.RELEASE</spring-cloud-alibaba.version>
+
+        <nacos.version>2.0.0</nacos.version>
+        <easypoi.version>4.2.0</easypoi.version>
     </properties>
 
     <dependencyManagement>
@@ -56,10 +59,19 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <!-- Nacos-->
             <dependency>
                 <groupId>com.alibaba.nacos</groupId>
                 <artifactId>nacos-client</artifactId>
-                <version>2.0.0</version>
+                <version>${nacos.version}</version>
+            </dependency>
+
+            <!-- easy poi -->
+            <dependency>
+                <groupId>cn.afterturn</groupId>
+                <artifactId>easypoi-spring-boot-starter</artifactId>
+                <version>${easypoi.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
