@@ -1,18 +1,7 @@
-# 端口
-server:
-  port: 9001
-
 spring:
   application:
     # 应用名称
     name: @artifactId@
   profiles:
     # 环境配置
-    active: @profiles.active@
-dubbo:
-  protocol:
-    name: dubbo
-    port: -1
-  registry:
-    #   The Spring Cloud Dubbo's registry extension
-    address: nacos://192.168.164.128:8848?namespace=7bf8387e-5dc4-49bf-a878-8b95b805556a
+    active: @active@

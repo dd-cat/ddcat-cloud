@@ -3,6 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.7.RELEASE</version>
+        <relativePath/>
+    </parent>
 
     <groupId>com.ddcat</groupId>
     <artifactId>ddcat-cloud</artifactId>
@@ -17,17 +23,10 @@
     <packaging>pom</packaging>
 
     <properties>
-        <java.version>1.8</java.version>
-
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-
-        <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
-        <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.2.RELEASE</spring-cloud-alibaba.version>
-
         <nacos.version>2.0.0</nacos.version>
-        <easypoi.version>4.2.0</easypoi.version>
+        <hutool.version>5.7.3</hutool.version>
     </properties>
 
     <dependencyManagement>
@@ -38,15 +37,6 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <!-- SpringBoot -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -66,13 +56,6 @@
                 <artifactId>nacos-client</artifactId>
                 <version>${nacos.version}</version>
             </dependency>
-
-            <!-- easy poi -->
-            <dependency>
-                <groupId>cn.afterturn</groupId>
-                <artifactId>easypoi-spring-boot-starter</artifactId>
-                <version>${easypoi.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -87,37 +70,19 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.6.4</version>
+            <version>${hutool.version}</version>
         </dependency>
     </dependencies>
 
     <!-- 构建配置 -->
     <build>
-        <finalName>${project.artifactId}</finalName>
-        <!-- 编译时打包XML文件 -->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
+                <!-- 开启YML中使用双@符合获取POM变量 -->
                 <filtering>true</filtering>
             </resource>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                </includes>
-            </resource>
         </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
 
     <profiles>
@@ -125,7 +90,7 @@
             <id>dev</id>
             <properties>
                 <!-- 环境标识，需要与配置文件的名称相对应 -->
-                <profiles.active>dev</profiles.active>
+                <active>dev</active>
             </properties>
             <activation>
                 <!-- 默认环境 -->

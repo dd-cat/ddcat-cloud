@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddcat.mapper.SysUserMapper">
+    <select id="page" resultType="UserPageVO">
+        SELECT
+        a.id,
+        a.account,
+        a.username,
+        b.name dept_name,
+        a.mobile,
+        a.create_time
+        FROM sys_user a
+        LEFT JOIN sys_dept b ON a.dept_id = b.id and b.flag = 0
+        WHERE a.flag = 0
+        <if test="dto.account != null and dto.account != ''">
+            AND a.account LIKE "%"#{dto.account}"%"
+        </if>
+        <if test="dto.name != null and dto.name != ''">
+            AND a.name LIKE "%"#{dto.name}"%"
+        </if>
+        <if test="dto.mobile != null and dto.mobile != ''">
+            AND a.mobile LIKE "%"#{dto.mobile}"%"
+        </if>
+        <if test="!ids.isEmpty()">
+            AND a.dept_id IN (
+            <foreach collection="ids" item="id" separator=",">
+                ${id}
+            </foreach>
+            )
+        </if>
+    </select>
+</mapper>

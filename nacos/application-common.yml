@@ -1,7 +1,28 @@
-spring: 
-    # profiles: 
-        # 启动环境加载，同时加载两个的写法：common,prod  优先级左>右
-        # active: core-dev
-        # active: test
-        # active: prod
-        
+spring:
+  # redis配置 
+  redis:
+    # Redis数据库索引（默认为0）
+    database: 0
+    # Redis服务器地址
+    host: 192.168.164.128
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    # password: 
+    # 连接超时时间（毫秒）
+    timeout: 1000ms
+mybatis-plus:
+  global-config:
+    # 关闭自带的banner
+    banner: false
+    db-config:
+      #主键类型 默认使用雪花ID
+      #字段策略
+      select-strategy: not_empty
+      #驼峰下划线转换
+      table-underline: true
+      logic-delete-field: flag
+  configuration:
+    # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.ddcat.entity

@@ -12,9 +12,10 @@
     <artifactId>ddcat-core</artifactId>
 
     <properties>
-        <mybatis-plus.version>3.4.2</mybatis-plus.version>
+        <mybatis-plus.version>3.4.3.1</mybatis-plus.version>
         <sharding-jdbc.version>4.1.1</sharding-jdbc.version>
         <mysql.version>8.0.24</mysql.version>
+        <easypoi.version>4.4.0</easypoi.version>
     </properties>
 
     <dependencies>
@@ -59,25 +60,6 @@
             <version>${mysql.version}</version>
         </dependency>
 
-        <!-- Druid -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.2.6</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>21.0</version>
-        </dependency>
-
         <!--validation校验-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -88,7 +70,7 @@
         <dependency>
             <groupId>cn.afterturn</groupId>
             <artifactId>easypoi-spring-boot-starter</artifactId>
+            <version>${easypoi.version}</version>
         </dependency>
-
     </dependencies>
 </project>

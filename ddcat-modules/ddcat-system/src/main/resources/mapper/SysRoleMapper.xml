@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ddcat.system.mapper.SysRoleMapper">
-
-    <!-- 通过用户ID，查询角色信息-->
-    <select id="listRolesByUserId" resultType="com.ddcat.api.entity.SysRole">
+<mapper namespace="com.ddcat.mapper.SysRoleMapper">
+    <select id="listRolesByUserId" resultType="SysRole">
         SELECT r.*
         FROM sys_role r,
              sys_user_role ur
         WHERE r.id = ur.role_id
           AND r.flag = 0
-          and ur.user_id IN (#{userId})
+          and ur.user_id=#{userId}
     </select>
 </mapper>
