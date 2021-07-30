@@ -1,14 +1,8 @@
 spring:
-  # redis配置 
+  # redis配置
   redis:
-    # Redis数据库索引（默认为0）
-    database: 0
-    # Redis服务器地址
-    host: 192.168.164.128
-    # Redis服务器连接端口
-    port: 6379
     # Redis服务器连接密码（默认为空）
-    # password: 
+    # password:
     # 连接超时时间（毫秒）
     timeout: 1000ms
 mybatis-plus:
@@ -26,3 +20,28 @@ mybatis-plus:
     # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
     map-underscore-to-camel-case: true
   type-aliases-package: com.ddcat.entity
+seata:
+  enabled: true
+  enable-auto-data-source-proxy: true
+  registry:
+    type: nacos
+  config:
+    type: nacos
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default
+    disable-global-transaction: false
+  client:
+    rm:
+      report-success-enable: false
+dubbo:
+  scan:
+    # Dubbo 服务实现类基础包
+    base-packages: tech.yunx.api
+  # Dubbo 服务暴露的协议配置
+  consumer:
+    # 服务启动检查 默认开启 服务启动检查依赖服务如不可用抛出异常
+    check: false
+  protocol:
+    name: dubbo
+    port: -1

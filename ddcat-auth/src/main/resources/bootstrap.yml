@@ -13,11 +13,3 @@ spring:
 dubbo:
   cloud:
     subscribed-services: ddcat-system
-  consumer:
-    check: false
-  protocol:
-    name: dubbo
-    port: -1
-  registry:
-    #   The Spring Cloud Dubbo's registry extension
-    address: nacos://192.168.164.128:8848?namespace=7bf8387e-5dc4-49bf-a878-8b95b805556a

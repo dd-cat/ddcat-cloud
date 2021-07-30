@@ -1,45 +1,33 @@
+spring:
+  # redis配置
+  redis:
+    # Redis数据库索引（默认为0）
+    database: 0
+    # Redis服务器地址
+    host: 192.168.164.128
+    # Redis服务器连接端口
+    port: 6379
 seata:
-  enabled: true
-  enable-auto-data-source-proxy: true
   tx-service-group: my_test_tx_group
   registry:
-    type: nacos
     nacos:
       application: seata-server
       server-addr: 192.168.164.128:8848
       username: nacos
       password: nacos
   config:
-    type: nacos
     nacos:
       server-addr: 192.168.164.128:8848
       group: SEATA_GROUP
       username: nacos
       password: nacos
       namespace: 465a28fb-e8f1-48ba-ae78-9dd9d77d166e
-  service:
-    vgroup-mapping:
-      my_test_tx_group: default
-    disable-global-transaction: false
-  client:
-    rm:
-      report-success-enable: false
 file:
   # 访问前缀
   prefix: http://localhost:8080/file/ddcat/
   # 服务器存储路径
   path: /data/ddcat/
 dubbo:
-  scan:
-    # Dubbo 服务实现类基础包
-    base-packages: tech.yunx.api
-  # Dubbo 服务暴露的协议配置
-  consumer:
-    # 服务启动检查 默认开启 服务启动检查依赖服务如不可用抛出异常
-    check: false
-  protocol:
-    name: dubbo
-    port: -1
   registry:
     #   The Spring Cloud Dubbo's registry extension
-    address: nacos://192.168.164.128:8848?namespace=7bf8387e-5dc4-49bf-a878-8b95b805556a
+    address: nacos://192.168.164.128:8848?namespace=privateDubboId
