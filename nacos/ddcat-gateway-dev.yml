@@ -1,3 +1,6 @@
+# 端口
+server:
+  port: 10000
 spring:
   cloud:
     gateway:
@@ -5,7 +8,6 @@ spring:
         locator:
           # 是否和服务注册与发现组件结合，设置为 true 后可以直接使用应用名称调用服务
           enabled: true
-          
       routes:
         - id: ddcat-auth
           uri: lb://ddcat-auth

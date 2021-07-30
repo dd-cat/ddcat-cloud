@@ -17,17 +17,15 @@ public interface SysRoleMapper extends BaseMapper<SysRole> {
      * 清除当前用户拥有权限
      *
      * @param roleId -
-     * @return -
      */
     @Delete("delete from role_menu where role_id = ${roleId}")
-    long deleteMenuById(long roleId);
+    void deleteMenuById(long roleId);
 
     /**
      * 新增当前用户拥有权限
      *
      * @param roleId  -
      * @param menuIds -
-     * @return -
      */
     @Insert("<script>" +
             "insert into role_menu(role_id, menu_id) value" +
@@ -35,7 +33,7 @@ public interface SysRoleMapper extends BaseMapper<SysRole> {
             "(${roleId},${menuId})" +
             "</foreach>" +
             "</script>")
-    long insertMenu(@Param("roleId") long roleId, @Param("menuIds") long[] menuIds);
+    void insertMenu(@Param("roleId") long roleId, @Param("menuIds") long[] menuIds);
 
     /**
      * 通过用户ID，查询角色信息
