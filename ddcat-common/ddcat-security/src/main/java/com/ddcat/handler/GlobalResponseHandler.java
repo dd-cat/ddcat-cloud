@@ -18,7 +18,7 @@ import java.lang.annotation.Annotation;
  *
  * @author dd-cat
  */
-@RestControllerAdvice({"com.ddcat.system.controller"})
+@RestControllerAdvice
 public class GlobalResponseHandler implements ResponseBodyAdvice<Object> {
     private static final Class<? extends Annotation> ANNOTATION_TYPE = ResponseBody.class;
 

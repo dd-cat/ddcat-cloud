@@ -19,7 +19,6 @@ import java.util.List;
  * @author dd-cat
  */
 @RestControllerAdvice
-@Slf4j
 public class GlobalExceptionHandler {
     /**
      * 业务异常

@@ -1,6 +1,7 @@
 package com.ddcat.handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import com.ddcat.util.SecurityUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;
@@ -25,14 +26,14 @@ public class DefaultMetaObjectHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
         log.info("start insert fill ....");
         this.strictInsertFill(metaObject, CREATE_TIME, LocalDateTime.class, LocalDateTime.now());
-        this.strictInsertFill(metaObject, CREATE_USER_ID, Long.class, 0L);
+        this.strictInsertFill(metaObject, CREATE_USER_ID, Long.class, SecurityUtil.getUserId());
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
         log.info("start update fill ....");
         this.strictUpdateFill(metaObject, UPDATE_TIME, LocalDateTime.class, LocalDateTime.now());
-        this.strictInsertFill(metaObject, UPDATE_USER_ID, Long.class, 0L);
+        this.strictInsertFill(metaObject, UPDATE_USER_ID, Long.class, SecurityUtil.getUserId());
     }
 
 
