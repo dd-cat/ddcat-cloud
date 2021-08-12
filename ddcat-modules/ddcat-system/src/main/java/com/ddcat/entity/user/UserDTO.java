@@ -46,7 +46,11 @@ public class UserDTO {
     @NotNull(message = "个人简介必填")
     private String remark;
     /**
+     * 头像
+     */
+    private String avatar;
+    /**
      * 角色
      */
-    private String[] roles;
+    private long[] roleIds;
 }
