@@ -26,7 +26,7 @@ public class SysUserController {
      * 当前登录用户信息
      */
     @GetMapping("info")
-    public UserLoginVO info(HttpServletRequest request) {
+    public UserLoginVO info() {
         return service.info();
     }
 

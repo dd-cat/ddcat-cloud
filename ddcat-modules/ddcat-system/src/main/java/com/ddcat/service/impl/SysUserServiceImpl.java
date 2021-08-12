@@ -2,6 +2,7 @@ package com.ddcat.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.text.CharSequenceUtil;
+import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.IdcardUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
@@ -13,6 +14,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ddcat.entity.SysMenu;
 import com.ddcat.entity.SysRole;
 import com.ddcat.entity.SysUser;
+import com.ddcat.entity.SysUserRole;
 import com.ddcat.entity.user.*;
 import com.ddcat.enums.ResultEnum;
 import com.ddcat.exception.BusinessException;
@@ -20,6 +22,7 @@ import com.ddcat.mapper.SysDeptMapper;
 import com.ddcat.mapper.SysUserMapper;
 import com.ddcat.service.SysMenuService;
 import com.ddcat.service.SysRoleService;
+import com.ddcat.service.SysUserRoleService;
 import com.ddcat.service.SysUserService;
 import com.ddcat.util.SecurityUtil;
 import lombok.RequiredArgsConstructor;
@@ -45,6 +48,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     private final SysDeptMapper deptMapper;
     private final SysRoleService roleService;
     private final SysMenuService menuService;
+    private final SysUserRoleService userRoleService;
 
     @Override
     public void saveOrUpdate(UserDTO dto) {
@@ -72,6 +76,18 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
             entity.setPassword(password);
         }
         super.saveOrUpdate(entity);
+        // 添加用户角色关联信息
+        if (ArrayUtil.isNotEmpty(dto.getRoleIds())) {
+            userRoleService.remove(Wrappers.<SysUserRole>lambdaQuery().eq(SysUserRole::getUserId, entity.getId()));
+            List<SysUserRole> list = new ArrayList<>();
+            for (long roleId : dto.getRoleIds()) {
+                SysUserRole userRole = new SysUserRole();
+                userRole.setUserId(entity.getId());
+                userRole.setRoleId(roleId);
+                list.add(userRole);
+            }
+            userRoleService.saveBatch(list);
+        }
     }
 
     @Override
@@ -124,7 +140,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         int i = baseMapper.deleteById(id);
         // 删除用户角色关联
         if (i > 0) {
-            baseMapper.deleteUserById(id);
+            userRoleService.remove(Wrappers.<SysUserRole>lambdaQuery().eq(SysUserRole::getUserId, id));
         }
     }
 }
