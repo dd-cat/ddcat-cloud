@@ -4,7 +4,7 @@ import os
 
 import requests
 
-address = 'http://192.168.3.175:8848/nacos'
+address = 'http://192.168.164.128:8848/nacos'
 username = 'nacos'
 password = 'nacos'
 

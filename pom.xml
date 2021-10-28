@@ -14,10 +14,10 @@
     <artifactId>ddcat-cloud</artifactId>
     <version>1.0</version>
     <modules>
-        <module>ddcat-common</module>
-        <module>ddcat-modules</module>
-        <module>ddcat-native</module>
-        <module>ddcat-auth</module>
+        <module>common</module>
+        <module>modules</module>
+        <module>native</module>
+        <module>auth</module>
     </modules>
 
     <packaging>pom</packaging>
