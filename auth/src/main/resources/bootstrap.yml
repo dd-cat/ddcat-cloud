@@ -1,14 +1,10 @@
-# 端口
-server:
-  port: 9003
-
 spring:
   application:
     # 应用名称
     name: @artifactId@
   profiles:
     # 环境配置
-    active: @profiles.active@
+    active: @active@
 
 dubbo:
   cloud:
