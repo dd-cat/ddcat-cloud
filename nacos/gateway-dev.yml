@@ -9,22 +9,22 @@ spring:
           # 是否和服务注册与发现组件结合，设置为 true 后可以直接使用应用名称调用服务
           enabled: true
       routes:
-        - id: ddcat-auth
-          uri: lb://ddcat-auth
+        - id: auth
+          uri: lb://auth
           predicates:
             - Path=/auth/**
           filters:
             - StripPrefix=1
 
-        - id: ddcat-system
-          uri: lb://ddcat-system
+        - id: system
+          uri: lb://system
           predicates:
             - Path=/system/**
           filters:
             - StripPrefix=1
 
-        - id: ddcat-job
-          uri: lb://ddcat-job
+        - id: job
+          uri: lb://job
           predicates:
             - Path=/job/**
           filters:
