@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>core</artifactId>
+    <artifactId>ddcat-core</artifactId>
 
     <properties>
         <mybatis-plus.version>3.4.3.1</mybatis-plus.version>
