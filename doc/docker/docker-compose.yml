@@ -1,0 +1,49 @@
+version: '3'
+services:
+  mysql:
+    restart: always
+    image: mysql
+    environment:
+      - "MYSQL_ROOT_PASSWORD=123456"
+    volumes:
+      - ./mysql/conf/my.cnf:/etc/mysql/my.cnf
+      - ./mysql/data/mysql:/var/lib/mysql
+    container_name: mysql
+    ports:
+      - "3306:3306"
+  redis:
+    restart: always
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+  nacos:
+    restart: always
+    image: "18f5f2842ec8"
+    environment:
+      - "MODE=standalone"
+      - "SPRING_DATASOURCE_PLATFORM=mysql"
+      - "MYSQL_SERVICE_HOST=192.168.1.4"
+      - "MYSQL_SERVICE_PORT=3306"
+      - "MYSQL_SERVICE_USER=root"
+      - "MYSQL_SERVICE_PASSWORD=123456"
+      - "MYSQL_SERVICE_DB_NAME=nacos_config"
+    container_name: nacos
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+      - "9849:9849"
+  seata:
+    restart: always
+    image: "26f8b162b71f"
+    container_name: seata
+    ports:
+      - "8091:8091"
+      - "7091:7091"
+    environment:
+      - STORE_MODE=db
+      # 以SEATA_IP作为host注册seata server
+      - SEATA_IP=192.168.1.4
+      - SEATA_PORT=8091
+    volumes:
+      - "./seata/resources:/seata-server/resources"

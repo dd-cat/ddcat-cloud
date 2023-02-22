@@ -10,9 +10,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class JacksonConfiguration {
-    /**
-     * 时区配置
-     */
+
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jacksonObjectMapperCustomization() {
         return builder -> {

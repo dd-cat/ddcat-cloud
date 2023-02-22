@@ -7,10 +7,6 @@ package com.ddcat.constant;
  */
 public interface CacheConstants {
     /**
-     * 用来存储oauth的token
-     */
-    String REDIS_TOKEN_KEY = "oauth:token:";
-    /**
      * 字典
      */
     String DICT = "dict:";

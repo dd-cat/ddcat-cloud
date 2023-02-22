@@ -1,0 +1,11 @@
+dependencies {
+    implementation project(':api')
+    implementation project(':nacos')
+    implementation project(':redis')
+    implementation project(':core')
+    implementation 'com.google.guava:guava'
+    implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-seata:2.2.0.RELEASE'
+    implementation 'io.seata:seata-spring-boot-starter:1.4.1'
+}
+
+description = 'job'

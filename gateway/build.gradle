@@ -1,0 +1,7 @@
+dependencies {
+    implementation project(':nacos')
+    implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
+    implementation 'com.alibaba.csp:sentinel-spring-cloud-gateway-adapter'
+}
+
+description = 'gateway'

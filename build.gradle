@@ -1,0 +1,54 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.8'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+repositories {
+    maven { url = "https://maven.aliyun.com/nexus/content/repositories/central/" }
+    mavenCentral()
+}
+
+group = 'com.ddcat'
+version = '1.0'
+sourceCompatibility = '1.8'
+
+// subprojects : 所有子模块共享的配置
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    group = 'com.ddcat'
+    version = '1.0'
+    sourceCompatibility = '1.8'
+
+    // 配置所有子模块的依赖仓库地址
+    repositories {
+        maven { url = "https://maven.aliyun.com/nexus/content/repositories/central/" }
+        mavenCentral()
+    }
+    ext {
+        set('springCloudAlibabaVersion', "2021.0.4.0")
+        set('springCloudVersion', "2021.0.5")
+        set('nacosVersion', "2.2.0")
+    }
+    dependencies {
+        implementation 'org.projectlombok:lombok:1.18.24'
+        implementation 'cn.hutool:hutool-all:5.8.12'
+    }
+    dependencyManagement {
+        imports {
+            mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+    //所有子模块共有依赖
+    bootJar {
+        enabled = false
+    }
+
+    jar {
+        enabled = true
+    }
+}

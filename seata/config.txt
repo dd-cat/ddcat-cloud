@@ -1,87 +1,45 @@
-transport.type=TCP
-transport.server=NIO
-transport.heartbeat=true
-transport.enableClientBatchSendRequest=false
-transport.threadFactory.bossThreadPrefix=NettyBoss
-transport.threadFactory.workerThreadPrefix=NettyServerNIOWorker
-transport.threadFactory.serverExecutorThreadPrefix=NettyServerBizHandler
-transport.threadFactory.shareBossWorker=false
-transport.threadFactory.clientSelectorThreadPrefix=NettyClientSelector
-transport.threadFactory.clientSelectorThreadSize=1
-transport.threadFactory.clientWorkerThreadPrefix=NettyClientWorkerThread
-transport.threadFactory.bossThreadSize=1
-transport.threadFactory.workerThreadSize=default
-transport.shutdown.wait=3
-service.vgroupMapping.my_test_tx_group=default
-service.default.grouplist=127.0.0.1:8091
-service.enableDegrade=false
-service.disableGlobalTransaction=false
-client.rm.asyncCommitBufferLimit=10000
-client.rm.lock.retryInterval=10
-client.rm.lock.retryTimes=30
-client.rm.lock.retryPolicyBranchRollbackOnConflict=true
-client.rm.reportRetryCount=5
-client.rm.tableMetaCheckEnable=false
-client.rm.tableMetaCheckerInterval=60000
-client.rm.sqlParserType=druid
-client.rm.reportSuccessEnable=false
-client.rm.sagaBranchRegisterEnable=false
-client.tm.commitRetryCount=5
-client.tm.rollbackRetryCount=5
-client.tm.defaultGlobalTransactionTimeout=60000
-client.tm.degradeCheck=false
-client.tm.degradeCheckAllowTimes=10
-client.tm.degradeCheckPeriod=2000
-store.mode=file
-store.publicKey=
-store.file.dir=file_store/data
-store.file.maxBranchSessionSize=16384
-store.file.maxGlobalSessionSize=512
-store.file.fileWriteBufferCacheSize=16384
-store.file.flushDiskMode=async
-store.file.sessionReloadReadSize=100
+store.mode=db
+#-----db-----
 store.db.datasource=druid
 store.db.dbType=mysql
-store.db.driverClassName=com.mysql.jdbc.Driver
-store.db.url=jdbc:mysql://192.168.164.128:3306/seata?useUnicode=true&rewriteBatchedStatements=true
-store.db.user=root
-store.db.password=123456
-store.db.minConn=5
-store.db.maxConn=30
-store.db.globalTable=global_table
-store.db.branchTable=branch_table
-store.db.queryLimit=100
-store.db.lockTable=lock_table
+# 需要根据mysql的版本调整driverClassName
+# mysql8及以上版本对应的driver：com.mysql.cj.jdbc.Driver
+# mysql8以下版本的driver：com.mysql.jdbc.Driver
+store.db.driverClassName=com.mysql.cj.jdbc.Driver
+store.db.url=jdbc:mysql://127.0.0.1:3306/seata-server?useUnicode=true&characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
+store.db.user= 用户名
+store.db.password=密码
+# 数据库初始连接数
+store.db.minConn=1
+# 数据库最大连接数
+store.db.maxConn=20
+# 获取连接时最大等待时间 默认5000，单位毫秒
 store.db.maxWait=5000
-store.redis.mode=single
-store.redis.single.host=192.168.164.128
-store.redis.single.port=6379
-store.redis.maxConn=10
-store.redis.minConn=1
-store.redis.maxTotal=100
-store.redis.database=0
-store.redis.password=
-store.redis.queryLimit=100
-server.recovery.committingRetryPeriod=1000
-server.recovery.asynCommittingRetryPeriod=1000
-server.recovery.rollbackingRetryPeriod=1000
-server.recovery.timeoutRetryPeriod=1000
-server.maxCommitRetryTimeout=-1
-server.maxRollbackRetryTimeout=-1
-server.rollbackRetryTimeoutUnlockEnable=false
-client.undo.dataValidation=true
-client.undo.logSerialization=jackson
-client.undo.onlyCareUpdateColumns=true
+# 全局事务表名 默认global_table
+store.db.globalTable=global_table
+# 分支事务表名 默认branch_table
+store.db.branchTable=branch_table
+# 全局锁表名 默认lock_table
+store.db.lockTable=lock_table
+# 查询全局事务一次的最大条数 默认100
+store.db.queryLimit=100
+
+
+# undo保留天数 默认7天,log_status=1（附录3）和未正常清理的undo
 server.undo.logSaveDays=7
+# undo清理线程间隔时间 默认86400000，单位毫秒
 server.undo.logDeletePeriod=86400000
-client.undo.logTable=undo_log
-client.undo.compress.enable=true
-client.undo.compress.type=zip
-client.undo.compress.threshold=64k
-log.exceptionRate=100
-transport.serialization=seata
-transport.compressor=none
-metrics.enabled=false
-metrics.registryType=compact
-metrics.exporterList=prometheus
-metrics.exporterPrometheusPort=9898
+# 二阶段提交重试超时时长 单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试
+# 公式: timeout>=now-globalTransactionBeginTime,true表示超时则不再重试
+# 注: 达到超时时间后将不会做任何重试,有数据不一致风险,除非业务自行可校准数据,否者慎用
+server.maxCommitRetryTimeout=-1
+# 二阶段回滚重试超时时长
+server.maxRollbackRetryTimeout=-1
+# 二阶段提交未完成状态全局事务重试提交线程间隔时间 默认1000，单位毫秒
+server.recovery.committingRetryPeriod=1000
+# 二阶段异步提交状态重试提交线程间隔时间 默认1000，单位毫秒
+server.recovery.asynCommittingRetryPeriod=1000
+# 二阶段回滚状态重试回滚线程间隔时间  默认1000，单位毫秒
+server.recovery.rollbackingRetryPeriod=1000
+# 超时状态检测重试线程间隔时间 默认1000，单位毫秒，检测出超时将全局事务置入回滚会话管理器
+server.recovery.timeoutRetryPeriod=1000

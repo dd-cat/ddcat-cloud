@@ -4,7 +4,7 @@ import os
 
 import requests
 
-address = 'http://192.168.164.128:8848/nacos'
+address = 'http://localhost:8848/nacos'
 username = 'nacos'
 password = 'nacos'
 
@@ -48,14 +48,12 @@ def push_config(tenant, name, content, nacos_group, nacos_type):
 
 
 if __name__ == '__main__':
-    if create_namespace('privateId', 'private'):
-        print('创建项目命名空间成功')
-    if create_namespace('privateDubboId', 'privateDubbo'):
-        print('创建 Dubbo 命名空间成功')
+    # if create_namespace('public', 'public'):
+    #     print('创建项目命名空间成功')
     for dir in os.listdir():
         if dir != 'nacos-config.py':
             with open(dir, encoding='utf8') as f:
                 # 推送配置
-                if push_config('privateId', dir, f.read(),
+                if push_config('', dir, f.read(),
                                'DEFAULT_GROUP', dir[dir.rfind('.') + 1:]):
                     print('推送' + dir + '配置成功')
