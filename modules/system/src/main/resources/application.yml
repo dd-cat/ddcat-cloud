@@ -1,4 +1,4 @@
 spring:
   application:
     # 应用名称
-    name: gateway
+    name: system
